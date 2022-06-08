@@ -11,8 +11,8 @@ class Form {
     return this.#fieldData[this.#index];
   }
 
-  displayMessage() {
-    console.log(this.currentField().getPrompt());
+  getCurrentPrompt() {
+    return this.currentField().getPrompt();
   }
 
   areQueriesComplete() {
@@ -25,7 +25,7 @@ class Form {
       this.#index++;
       return;
     }
-    console.log('Invalid response');
+    throw new Error('Invalid Response');
   }
 
   getAllDetails() {
