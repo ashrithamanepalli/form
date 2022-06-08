@@ -2,8 +2,8 @@ const fs = require('fs');
 const { registerResponse } = require('./src/fillForm.js');
 const { createForm } = require('./src/createUserDetailsForm.js');
 
-const endInputStream = (details) => {
-  console.log('Thank You');
+const endInputStream = (details, logger) => {
+  logger('Thank You');
   fs.writeFileSync('./src/form.json', JSON.stringify(details), 'utf8');
   process.stdin.destroy();
 };

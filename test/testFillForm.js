@@ -35,7 +35,7 @@ describe('fillForm', () => {
     assert.deepStrictEqual(responses, ['dob', 'hobbies']);
   });
 
-  it('should end after receiving all responses', () => {
+  it('should display Thank you message after receiving all responses', () => {
     const nameField = new Field('name', 'name', alwaysTrue, identity);
     const dobField = new Field('dob', 'dob', alwaysTrue, identity);
     const form = new Form(nameField, dobField);
@@ -45,7 +45,7 @@ describe('fillForm', () => {
     registerResponse(form, 'ashritha', logger, endInputStream);
     registerResponse(form, '1234-56-78', logger, endInputStream);
 
-    assert.deepStrictEqual(responses, ['dob']);
+    assert.deepStrictEqual(responses, ['dob', 'Thank You']);
   });
 
   it('for invalid response display invalid message and same prompt as prev',

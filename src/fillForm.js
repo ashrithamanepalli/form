@@ -6,7 +6,7 @@ const registerResponse = (form, response, logger, callBack) => {
   }
 
   if (form.areQueriesComplete()) {
-    callBack(form.getAllDetails());
+    callBack(form.getAllDetails(), logger);
     return;
   }
 
