@@ -7,12 +7,12 @@ class Form {
     this.#index = 0;
   }
 
-  currentField() {
+  #currentField() {
     return this.#fieldData[this.#index];
   }
 
   getCurrentPrompt() {
-    return this.currentField().getPrompt();
+    return this.#currentField().getPrompt();
   }
 
   areQueriesComplete() {
@@ -20,8 +20,8 @@ class Form {
   }
 
   addInfo(response) {
-    if (this.currentField().isValid(response)) {
-      this.currentField().fillField(response);
+    if (this.#currentField().isValid(response)) {
+      this.#currentField().fillField(response);
       this.#index++;
       return;
     }
