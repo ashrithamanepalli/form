@@ -23,3 +23,5 @@ const main = () => {
 };
 
 main();
+
+module.exports = { endInputStream };
