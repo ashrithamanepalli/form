@@ -16,13 +16,15 @@ class Form {
   }
 
   areQueriesComplete() {
-    return this.#index >= this.#fieldData.length;
+    return this.#fieldData.every((field) => field.isFilled());
   }
 
   addInfo(response) {
     if (this.#currentField().isValid(response)) {
       this.#currentField().fillField(response);
-      this.#index++;
+      if (this.#currentField().isFilled()) {
+        this.#index++;
+      }
       return;
     }
     throw new Error('Invalid Response');
