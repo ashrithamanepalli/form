@@ -1,6 +1,6 @@
 const assert = require('assert');
 const { registerResponse } = require('../src/fillForm.js');
-const { endInputStream } = require('../main.js');
+// const { endInputStream } = require('../main.js');
 const { Field } = require('../src/field.js');
 const { Form } = require('../src/form.js');
 
@@ -8,6 +8,9 @@ describe('fillForm', () => {
   const identity = (text) => text;
   const alwaysTrue = () => true;
   const isEnoughLength = (text) => text.length >= 5;
+  const callBack = (details, logger) => {
+    logger('Thank You');
+  };
 
   it('should answer current query and show message of next query', () => {
     const nameField = new Field('name', 'name', alwaysTrue, identity);
@@ -16,7 +19,7 @@ describe('fillForm', () => {
 
     const responses = [];
     const logger = (arg) => responses.push(arg);
-    registerResponse(form, 'ashritha', logger, endInputStream);
+    registerResponse(form, 'ashritha', logger, callBack);
 
     assert.deepStrictEqual(responses, ['dob']);
   });
@@ -29,8 +32,8 @@ describe('fillForm', () => {
 
     const responses = [];
     const logger = (arg) => responses.push(arg);
-    registerResponse(form, 'ashritha', logger, endInputStream);
-    registerResponse(form, '1234-56-78', logger, endInputStream);
+    registerResponse(form, 'ashritha', logger, callBack);
+    registerResponse(form, '1234-56-78', logger, callBack);
 
     assert.deepStrictEqual(responses, ['dob', 'hobbies']);
   });
@@ -42,8 +45,8 @@ describe('fillForm', () => {
 
     const responses = [];
     const logger = (arg) => responses.push(arg);
-    registerResponse(form, 'ashritha', logger, endInputStream);
-    registerResponse(form, '1234-56-78', logger, endInputStream);
+    registerResponse(form, 'ashritha', logger, callBack);
+    registerResponse(form, '1234-56-78', logger, callBack);
 
     assert.deepStrictEqual(responses, ['dob', 'Thank You']);
   });
@@ -56,7 +59,7 @@ describe('fillForm', () => {
 
       const responses = [];
       const logger = (arg) => responses.push(arg);
-      registerResponse(form, 'ash', logger, endInputStream);
+      registerResponse(form, 'ash', logger, callBack);
 
       assert.deepStrictEqual(responses, ['Invalid Response', 'name']);
     });

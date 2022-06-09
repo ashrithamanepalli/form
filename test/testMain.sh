@@ -49,7 +49,7 @@ eof
 };
 
 function test_responses(){
-  $(node main.js << eof > /dev/null
+  local prompts=$(node main.js << eof
 ashritha
 1234-09-76
 singing,humming
