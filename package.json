@@ -1,0 +1,21 @@
+{
+  "name": "form",
+  "version": "1.0.0",
+  "description": "Filling Form",
+  "main": "main.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "mocha",
+    "start": "node main.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "mocha": "^10.0.0"
+  },
+  "dependencies": {
+    "dayjs": "^1.11.3"
+  }
+}
